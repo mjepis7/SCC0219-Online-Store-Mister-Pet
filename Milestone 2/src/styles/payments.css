@@ -1,0 +1,29 @@
+.payments {
+  width: 65%;
+  display: flex;
+  flex-direction: column;
+  margin: 50px auto;
+  line-height: 1.6;
+}
+
+.payments h2 {
+  margin: 15px 0;
+  color: var(--blue-700);
+}
+
+.payments h3 {
+  margin: 15px 0;
+  color: var(--blue-700);
+}
+
+.payments li {
+  margin-left: -1.3rem;
+  color: var(--blue-500);
+}
+
+.payments p {
+  color: var(--blue-500);
+  margin: 20px 0;
+  text-align: justify;
+  font-size: 1.1rem;
+}

@@ -1,0 +1,110 @@
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem;
+  box-shadow: 0 1px 3px -2px black;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 3.125rem;
+  font-size: 1.25rem;
+  padding: 1rem;
+}
+
+.nav-menu li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  cursor: pointer;
+}
+
+.nav-menu-items {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-menu hr {
+  border: none;
+  width: 80%;
+  height: 3px;
+  border-radius: 10px;
+  background: var(--blue-700);
+}
+
+.nav-login-cart {
+  display: flex;
+  align-items: center;
+  gap: 2.81rem;
+}
+
+.nav-login-cart button {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 9.81rem;
+  height: 3.625rem;
+  padding: 1rem;
+  
+  outline: none;
+  border: 0;
+  border-radius: 10px;
+  color: var(--white);
+  font-size: 1.25rem;
+  font-weight: 500;
+  background: var(--blue-500);
+  cursor: pointer;
+
+  transition: background-color 0.1s;
+}
+
+.nav-login-cart button:hover {
+  background: var(--blue-700);
+}
+
+.nav-login-cart > button:active {
+  background: var(--white);
+}
+
+.nav-cart-count {
+  width: 1.37rem;
+  height: 1.37rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -2.18rem;
+  margin-left: -3.43rem;
+  border-radius: 11px;
+  font-size: 0.87rem;
+  background: red;
+  color: var(--white);
+}
+
+/* Estilos para telas médias */
+@media screen and (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto ;
+  }
+
+  .nav-menu {
+    font-size: 1rem;
+    margin-top: 1rem;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .nav-menu hr {
+    width: 100%;
+  }
+
+  .nav-login-cart {
+    margin-top: 1rem;
+  }
+}

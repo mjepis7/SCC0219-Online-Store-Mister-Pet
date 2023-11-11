@@ -1,0 +1,121 @@
+.admin {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.admin input {
+  width: 100%;
+  height: 25px;
+  padding-left: 20px;
+  border: 1px solid var(--gray-300);
+  outline: none;
+  color: var(--blue-700);
+  font-size: 18px;
+  border-radius: 10px;
+}
+
+.admin-format-main {
+  display: grid;
+  grid-template-columns: 0.5fr 2fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
+  align-items: center;
+  gap: 60px;
+  padding: 20px 0;
+  color: #454545;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.admin-format {
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.admin-remove-button {
+  margin: 0 auto;
+  width: 100%;
+  height: 45px;
+  background: #ee5353;
+  color: var(--white);
+  font-size: 20px;
+  font-weight: 500;
+  border: 0;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.1s;
+}
+
+.admin-remove-button:hover {
+  background: #db3838;
+}
+
+.admin-remove-icon {
+  width: 15px;
+  margin: 0 40px;
+  cursor: pointer;
+}
+
+.admin-quantity {
+  width: 64px;
+  height: 50px;
+  border: 2px solid #ebebeb;
+  background: var(--white);
+}
+
+.admin-add-button {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+
+
+.admin-add-button button {
+  width: 200px; 
+  height: 55px;
+  margin-top: 30px;
+    
+  color: var(--white);
+  background: var(--blue-500);
+  border: none;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  
+  transition: background-color 0.1s;
+}
+
+.admin-add-button button:hover {
+  background-color: var(--blue-700);
+}
+
+.admin-add-button button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Estilos para telas médias */
+@media (max-width: 768px) {
+  .admin {
+    margin: 50px 100px; 
+  }
+
+  .admin-format-main {
+    grid-template-columns: 1fr; 
+    gap: 20px; 
+    text-align: center;
+  }
+
+  .admin-add-button {
+    justify-content: center;
+  }
+
+  .admin-add-button button {
+    width: auto; 
+    margin-top: 10px; 
+  }
+}

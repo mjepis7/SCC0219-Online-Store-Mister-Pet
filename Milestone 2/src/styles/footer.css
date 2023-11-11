@@ -1,0 +1,63 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3.125rem;
+}
+
+.footer-links {
+  display: flex;
+  list-style: none;
+  gap: 3.125rem;
+  color: var(--gray-600);
+  font-size: 1.25rem;
+}
+
+.footer-links li {
+  cursor: pointer;
+}
+
+.footer-social-icons {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.footer-copyright {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.87rem;
+  width: 100%;
+  margin-bottom: 1.87rem;
+  color: var(--gray-600);
+  font-size: 1.25rem;
+}
+
+.footer-copyright hr {
+  width: 80%;
+  border: none;
+  border-radius: 10px;
+  height: 3px;
+  background: var(--gray-100);
+}
+
+/* Estilos para telas médias */
+@media screen and (max-width: 768px) {
+  .footer {
+    text-align: center;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .footer-links li {
+    font-size: 16px;
+    margin: 0.5rem 0;
+  }
+
+  .footer-copyright {
+    font-size: 16px;
+  }
+}

@@ -1,0 +1,29 @@
+.exchanges {
+  width: 65%;
+  display: flex;
+  flex-direction: column;
+  margin: 50px auto;
+  line-height: 1.6;
+}
+
+.exchanges h2 {
+  margin: 15px 0;
+  color: var(--blue-700);
+}
+
+.exchanges h3 {
+  margin: 15px 0;
+  color: var(--blue-700);
+}
+
+.exchanges li {
+  margin-left: -1.3rem;
+  color: var(--blue-500);
+}
+
+.exchanges p {
+  color: var(--blue-500);
+  margin: 20px 0;
+  text-align: justify;
+  font-size: 1.1rem;
+}
