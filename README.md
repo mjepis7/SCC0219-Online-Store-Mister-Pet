@@ -55,6 +55,3 @@ Você pode visualizar o Diagrama de Navegação no figma atráves [desse link](h
 ## Layout
 
 Você pode acessar o layout do projeto no Figma através [desse link](https://www.figma.com/file/F0mXpmOTapfxoEsVarjIAo/Trabalho-DW?type=design&node-id=0%3A1&mode=design&t=o8G5v310QnMZHMa7-1).
-"# SCC0219-Pet-Shop-project" 
-"# SCC0219-Pet-Shop-project" 
-"# SCC0219-Online-Store-Mister-Pet" 
