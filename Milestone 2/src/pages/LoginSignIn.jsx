@@ -23,7 +23,7 @@ export function LoginSignIn() {
     setErrorMessage('')
   }
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault()
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -33,18 +33,29 @@ export function LoginSignIn() {
       return
     }
 
-    const users = JSON.parse(localStorage.getItem('users')) || []
-    const user = users.find(u => u.email === email && u.password === password)
+    try {
+      const response = await fetch('/api/users', {
+        method: 'POST',
+        body: JSON.stringify({ email, password }),
+        headers: {
+          'Content-Type': 'application/json'
+        },
+      })
+      const user = await response.json()
 
-    if (user) {
-      if (email.endsWith('@admin.com')) {
-        window.location.href = '/admin'
+      if (user) {
+        if (email.endsWith('@admin.com')) {
+          window.location.href = '/admin'
+        } else {
+          alert('Bem vindo :)')
+          window.location.href = '/'
+        }
       } else {
-        alert('Bem vindo :)')
-        window.location.href = '/'
+        setErrorMessage('Credenciais inválidas. Por favor, tente novamente.')
       }
-    } else {
-      setErrorMessage('Credenciais inválidas. Por favor, tente novamente.')
+    } catch (error) {
+      console.error(error)
+      setErrorMessage('Ocorreu um erro ao fazer login. Por favor, tente novamente mais tarde.')
     }
   }
 

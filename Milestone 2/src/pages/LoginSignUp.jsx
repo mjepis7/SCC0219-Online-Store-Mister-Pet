@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import axios from 'axios';
+
 import '../styles/loginsignup.css'
 
 export function LoginSignUp() {
@@ -41,63 +43,35 @@ export function LoginSignUp() {
   }
 
   const handleRegister = e => {
-    e.preventDefault()
-
-    if (!name.trim()) {
-      setErrorMessage('Por favor, insira seu nome.')
-      return
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-
-    if (!emailRegex.test(email)) {
-      setErrorMessage('Por favor, insira um email válido.')
-      return
-    }
-
-    if (!phone) {
-      setErrorMessage('Por favor, insira seu número de telefone.')
-      return
-    }
-
-    if (password.length < 6) {
-      setErrorMessage('A senha deve ter pelo menos 6 caracteres.')
-      return
-    }
-
-    if (password !== confirmPassword) {
-      setErrorMessage('As senhas não coincidem. Por favor, tente novamente.')
-      return
-    }
-
-    const users = JSON.parse(localStorage.getItem('users')) || []
-
-    const existingUser = users.find(
-      user => user.name === name || user.email === email
-    )
-    if (existingUser) {
-      setErrorMessage('Usuário já cadastrado com o mesmo nome ou email.')
-      return
-    }
-
-    const user = {
+    e.preventDefault();
+  
+    // ...
+    
+    axios.post('mongodb://localhost:27017/mister_pet_db/users', {
       name,
       email,
       phone,
       password
-    }
-
-    users.push(user)
-    localStorage.setItem('users', JSON.stringify(users))
-
-    if (email.endsWith('@admin.com')) {
-      alert('Administrador cadastrado com sucesso!')
-      window.location.href = '/admin'
-    } else {
-      alert('Usuário cadastrado com sucesso!')
-      window.location.href = '/'
-    }
-  }
+    })
+    .then(response => {
+      // Tratar a resposta da sua API de acordo com o que você precisa
+      if (response.data.success) {
+        if (email.endsWith('@admin.com')) {
+          alert('Administrador cadastrado com sucesso!');
+          window.location.href = '/admin';
+        } else {
+          alert('Usuário cadastrado com sucesso!');
+          window.location.href = '/';
+        }
+      }
+    })
+    .catch(error => {
+      // Tratar o erro, exibir uma mensagem de erro para o usuário, etc.
+      console.error(error);
+      setErrorMessage('Ocorreu um erro ao cadastrar o usuário. Por favor, tente novamente.');
+    });
+  };
+  
 
   return (
     <div className="loginsignup">
