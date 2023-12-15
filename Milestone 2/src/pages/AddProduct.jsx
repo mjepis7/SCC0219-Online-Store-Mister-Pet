@@ -1,11 +1,11 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext, useEffect } from 'react';
 
-import { ShopContext } from '../context/ShopContext'
+import { ShopContext } from '../context/ShopContext';
 
-import '../styles/addproduct.css'
+import '../styles/addproduct.css';
 
 export function AddProduct() {
-  const { addProduct } = useContext(ShopContext)
+  const { addProduct } = useContext(ShopContext);
   const [formData, setFormData] = useState({
     id: '',
     name: '',
@@ -14,50 +14,63 @@ export function AddProduct() {
     description: '',
     stock: '',
     sold: ''
-  })
-  const [formValid, setFormValid] = useState(false)
+  });
+  const [formValid, setFormValid] = useState(false);
 
   const handleChange = e => {
-    const { name, value } = e.target
+    const { name, value } = e.target;
     setFormData({
       ...formData,
       [name]: value
-    })
-  }
+    });
+  };
 
   const handleImageUpload = e => {
-    const file = e.target.files[0]
+    const file = e.target.files[0];
     setFormData({
       ...formData,
       image: file
-    })
-  }
+    });
+  };
 
   const checkFormValidity = () => {
-    const { id, name, image, new_price, description, stock, sold } = formData
+    const { id, name, image, new_price, description, stock, sold } = formData;
     const isValid =
-      id && name && image && new_price && description && stock && sold
-    setFormValid(isValid)
-  }
+      id && name && image && new_price && description && stock && sold;
+    setFormValid(isValid);
+  };
 
   useEffect(() => {
-    checkFormValidity()
-  }, [formData])
+    checkFormValidity();
+  }, [formData]);
 
   const handleSubmit = e => {
-    e.preventDefault()
-    addProduct(formData)
-    alert('Produto adicionado com sucesso!')
-    setFormData({
-      id: '',
-      name: '',
-      image: '',
-      new_price: '',
-      description: '',
-      stock: '',
-      sold: ''
+    e.preventDefault();
+
+    // Chamada à API para adicionar o produto
+    fetch('mongodb://localhost:27017/mister_pet_db', {
+      method: 'POST',
+      body: JSON.stringify(formData),
+      headers: {
+        'Content-Type': 'application/json'
+      }
     })
-  }
+      .then(response => response.json())
+      .then(data => {
+        addProduct(data);
+        alert('Produto adicionado com sucesso!');
+        setFormData({
+          id: '',
+          name: '',
+          image: '',
+          new_price: '',
+          description: '',
+          stock: '',
+          sold: ''
+        });
+      })
+      .catch(error => console.error('Erro ao adicionar produto: ', error));
+  };
 
   return (
     <div className="add-product">
@@ -144,5 +157,5 @@ export function AddProduct() {
         </div>
       </form>
     </div>
-  )
+  );
 }
