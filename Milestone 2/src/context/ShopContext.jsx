@@ -16,15 +16,19 @@ export function ShopContextProvider(props) {
     return cart;
   };
 
-  const getProductsFromDB =  () => {
-    const productsUrl = "https://localhost:3001/products";
+  const getProductsFromDB = () => {
+    const productsUrl = "http://localhost:3001/products";
     fetch(productsUrl, {
       method: "GET",
       mode: "cors",
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log('data: ', data);
+        console.log("data: ", data);
+        setProducts(data);
+      })
+      .catch((error) => {
+        console.log("fetch data failed", error);
       });
 
     return products;
@@ -70,8 +74,12 @@ export function ShopContextProvider(props) {
     return totalItem;
   };
 
-  const asyncGetDefaultCart = useCallback(async () => {getDefaultCart()});
-  const asyncGetProductsFromDB = useCallback(async () => {getProductsFromDB()})
+  const asyncGetDefaultCart = useCallback(async () => {
+    getDefaultCart();
+  });
+  const asyncGetProductsFromDB = useCallback(async () => {
+    getProductsFromDB();
+  });
 
   const contextValue = {
     getTotalCartItems,

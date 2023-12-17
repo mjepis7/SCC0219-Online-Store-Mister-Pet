@@ -27,7 +27,7 @@ function generate_id() {
 
 function insert_db(json, collection) {
   try {
-    const db = db_connection.connectDB();
+    const db = connectDB();
     const colecao = db.collection(collection);
     const res_transaction = colecao.insertOne(json);
     console.log("Documento inserido com sucesso:", resultado);
@@ -110,7 +110,7 @@ router.post(
       phoneNumber: New_User.getPhoneNumber(),
       _id: New_User.getId_code(),
     };
-    insert_db(user_json);
+    insert_db(user_json, 'User');
 
     res.json(user_json);
   }
@@ -164,7 +164,7 @@ router.post(
       instock: New_product.getProductInStock(),
       _id: New_product.getId_code(),
     };
-    insert_db(product_json);
+    insert_db(product_json, 'Product');
   }
 );
 
