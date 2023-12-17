@@ -1,0 +1,25 @@
+{
+  "type": "Compass Connections",
+  "version": {
+    "$numberInt": "1"
+  },
+  "connections": [
+    {
+      "id": "30ef818a-7c5a-4b4d-9a99-570c5a3f113b",
+      "lastUsed": {
+        "$date": {
+          "$numberLong": "1702822540022"
+        }
+      },
+      "favorite": {
+        "name": "WEb"
+      },
+      "connectionOptions": {
+        "connectionString": "mongodb://localhost:27017/",
+        "oidc": {
+          "serializedState": "eyJvaWRjUGx1Z2luU3RhdGVWZXJzaW9uIjowLCJzdGF0ZSI6W119"
+        }
+      }
+    }
+  ]
+}

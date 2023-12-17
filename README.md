@@ -53,6 +53,8 @@ Você pode visualizar o Diagrama de Navegação no figma atráves [desse link](h
 <h3>Procedimento de compilação</h3>
 <p> Back end: 'npm install' para gerar as dependências e 'node app.js' para iniciar o back end </p>
 <p> Front end: 'npm install' para gerar dependências e 'npm start' para iniciar a aplicação </p>
+<p> Banco de dados: no MongoDB, importar o arquivo em "Milestone 2/src/assets/compass-connections.json", deve haver duas coleções chamadas Product e User, User deve estar vazia e Product populada. </p>
+<p> Em caso de Product estar vazia, importar o arquivo "Milestone 2/src/assets/Product.json" para dentro dela </p>
 
 ## Layout
 
