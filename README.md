@@ -46,11 +46,13 @@ Você pode visualizar o Diagrama de Navegação no figma atráves [desse link](h
 <h3>Plano de Testes</h3>
 
 <p>Serão realizados testes manuais de login e registro, gerenciamento de produtos, filtragem de produtos por categoria e também simulações de compra. Não será utilizado nenhum framework adicional.</p>
-<p>Para criar ou acessar a página de administradores, use emailqualquer@admin.com na hora de realizar o cadastro.</p>
+<p>Para criar ou acessar a página de administradores, use [emailqualquer]@admin.com na hora de realizar o cadastro.</p>
 
 <h3>Resultado dos Testes</h3>
 
 <h3>Procedimento de compilação</h3>
+<p> Back end: 'npm install' para gerar as dependências e 'node start' para iniciar o back end </p>
+<p> Front end: 'npm install' para gerar dependências e 'npm start' para iniciar a aplicação </p>
 
 ## Layout
 

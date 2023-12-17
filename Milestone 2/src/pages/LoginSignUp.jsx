@@ -47,7 +47,7 @@ export function LoginSignUp() {
   
     // ...
     
-    axios.post('mongodb://localhost:27017/mister_pet_db/users', {
+    axios.post('mongodb://localhost:27017/mister_pet_db/User', {
       name,
       email,
       phone,
