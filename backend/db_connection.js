@@ -3,7 +3,7 @@
 const { MongoClient } = require('mongodb');
 
 // URL de conexão com o banco de dados MongoDB
-const mongoURI = 'mongodb://localhost:27017/mister_pet_db';
+const mongoURI = 'mongodb://127.0.0.1:27017/mister_pet_db';
 
 // Função para conectar ao banco de dados
 async function connectDB() {

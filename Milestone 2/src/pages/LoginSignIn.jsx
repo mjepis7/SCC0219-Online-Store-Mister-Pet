@@ -34,7 +34,7 @@ export function LoginSignIn() {
     }
 
     try {
-      const response = await fetch('/api/users', {
+      const response = await fetch('https://localhost:3001/User', {
         method: 'POST',
         body: JSON.stringify({ email, password }),
         headers: {

@@ -1,73 +1,77 @@
-import { createContext, useState, useEffect } from 'react'
-import { connect } from 'mongodb'
+import { createContext, useState, useEffect, useCallback } from "react";
 
-export const ShopContext = createContext(null)
+export const ShopContext = createContext(null);
 
 export function ShopContextProvider(props) {
-  const [cartItems, setCartItems] = useState(getDefaultCart())
-  const [products, setProducts] = useState([])
-
-  useEffect(() => {
-    getProductsFromDB().then(data => setProducts(data))
-  }, [])
+  const [cartItems, setCartItems] = useState();
+  const [products, setProducts] = useState([]);
 
   const getDefaultCart = () => {
-    let cart = {}
+    let cart = {};
 
     for (let index = 0; index < products.length + 1; index++) {
-      cart[index] = 0
+      cart[index] = 0;
     }
 
-    return cart
-  }
+    return cart;
+  };
 
-  const getProductsFromDB = async () => {
-    const client = await connect('mongodb://localhost:27017')
-    const db = client.db('mister_pet_db')
-    const products = await db.collection('Product').find().toArray()
+  const getProductsFromDB =  () => {
+    const productsUrl = "https://localhost:3001/products";
+    fetch(productsUrl, {
+      method: "GET",
+      mode: "cors",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('data: ', data);
+      });
 
-    return products
-  }
+    return products;
+  };
 
-  const addToCart = itemId => {
-    setCartItems(prev => ({ ...prev, [itemId]: prev[itemId] + 1 }))
-  }
+  const addToCart = (itemId) => {
+    setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
+  };
 
-  const removeFromCart = itemId => {
-    setCartItems(prev => ({ ...prev, [itemId]: prev[itemId] - 1 }))
-  }
+  const removeFromCart = (itemId) => {
+    setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
+  };
 
-  const removeFromList = itemId => {
-    const updatedProducts = products.filter(product => product.id !== itemId)
-    setProducts(updatedProducts)
-  }
+  const removeFromList = (itemId) => {
+    const updatedProducts = products.filter((product) => product.id !== itemId);
+    setProducts(updatedProducts);
+  };
 
-  const addProduct = productData => {
-    setProducts(prev => [...prev, productData])
-  }
+  const addProduct = (productData) => {
+    setProducts((prev) => [...prev, productData]);
+  };
 
   const getTotalCartAmount = () => {
-    let totalAmount = 0
+    let totalAmount = 0;
 
     for (const item in cartItems) {
       if (cartItems[item] > 0) {
-        let itemInfo = products.find(product => product.id === Number(item))
-        totalAmount += itemInfo.new_price * cartItems[item]
+        let itemInfo = products.find((product) => product.id === Number(item));
+        totalAmount += itemInfo.new_price * cartItems[item];
       }
     }
-    return totalAmount
-  }
+    return totalAmount;
+  };
 
   const getTotalCartItems = () => {
-    let totalItem = 0
+    let totalItem = 0;
 
     for (const item in cartItems) {
       if (cartItems[item] > 0) {
-        totalItem += cartItems[item]
+        totalItem += cartItems[item];
       }
     }
-    return totalItem
-  }
+    return totalItem;
+  };
+
+  const asyncGetDefaultCart = useCallback(async () => {getDefaultCart()});
+  const asyncGetProductsFromDB = useCallback(async () => {getProductsFromDB()})
 
   const contextValue = {
     getTotalCartItems,
@@ -77,12 +81,17 @@ export function ShopContextProvider(props) {
     addToCart,
     removeFromCart,
     removeFromList,
-    addProduct
-  }
+    addProduct,
+  };
+
+  useEffect(() => {
+    asyncGetDefaultCart();
+    asyncGetProductsFromDB();
+  }, []);
 
   return (
     <ShopContext.Provider value={contextValue}>
       {props.children}
     </ShopContext.Provider>
-  )
+  );
 }
