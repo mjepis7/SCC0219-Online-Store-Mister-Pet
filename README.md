@@ -55,6 +55,7 @@ Você pode visualizar o Diagrama de Navegação no figma atráves [desse link](h
 <p> Front end: 'npm install' para gerar dependências e 'npm start' para iniciar a aplicação </p>
 <p> Banco de dados: no MongoDB, importar o arquivo em "Milestone 2/src/assets/compass-connections.json", deve haver duas coleções chamadas Product e User, User deve estar vazia e Product populada. </p>
 <p> Em caso de Product estar vazia, importar o arquivo "Milestone 2/src/assets/Product.json" para dentro dela </p>
+<p> OBS: É possível que a base de dados não seja criada corretamente (não sei mexer no Mongo desculpa), nesse caso, deve-se criá-la manualmente: Crie uma database nova chamada "mister_pet_db" e dentro adicione duas coleções chamadas "Product" e "User", e então importe para Product o arquivo "Milestone 2/src/assets/Product.json" </p>
 
 ## Layout
 
