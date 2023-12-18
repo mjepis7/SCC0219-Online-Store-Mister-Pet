@@ -46,7 +46,12 @@ Você pode visualizar o Diagrama de Navegação no figma atráves [desse link](h
 <h3>Plano de Testes</h3>
 
 <p>Serão realizados testes manuais de login e registro, gerenciamento de produtos, filtragem de produtos por categoria e também simulações de compra. Não será utilizado nenhum framework adicional.</p>
-<p>Para criar ou acessar a página de administradores, use [emailqualquer]@admin.com na hora de realizar o cadastro.</p>
+
+- Testar se a filtragem dos produtos está funcionando corretamente
+- Visualizar a página de produtos
+- Relizar o login/cadastro
+- Finalizar compra
+- Adicionar e remover produtos do carrinho
 
 <h3>Resultado dos Testes</h3>
 
